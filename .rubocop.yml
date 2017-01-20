@@ -8,3 +8,4 @@ AllCops:
   Exclude:
     - db/schema.rb
     - vendor/gems/bdd-rails/**/*.rb
+    - bin/spring
