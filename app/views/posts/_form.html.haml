@@ -21,5 +21,7 @@
   = form_for(@post) do |f|
     #form_post_text.field
       = f.text_area :message, placeholder: 'Write something interesting here...', autofocus: true
+    %p
+      Use Shift+Enter to submit the form.
     #form_post_submit.actions
       = f.submit 'Post!'

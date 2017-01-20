@@ -54,6 +54,12 @@ input[type="submit"] {
   width: 100%;
 }
 
+.post_form p {
+  margin: 0;
+  margin-bottom: 1em;
+  font-size: 1rem;
+}
+
 #form_post_submit {
   width: 100%;
   text-align: center;
@@ -75,6 +81,7 @@ input[type="submit"] {
   height: 150px;
   box-sizing : border-box;
   font-size: 1.25rem;
+  margin-bottom: 0;
 }
 
 .post {
