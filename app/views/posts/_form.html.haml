@@ -1,4 +1,5 @@
 .post_form
+
   - if @post.errors.any?
     .error_message
       %h4 
@@ -15,7 +16,7 @@
       .error
         = flash[:error]
 
-    .post_content.field
-      = f.text_field :message, placeholder: 'Write something interesting here...', autofocus: true
-    .post_submit.actions
-      = f.submit
+    #post_content.field
+      = f.text_area :message, placeholder: 'Write something interesting here...', autofocus: true
+    #post_submit.actions
+      = f.submit 'Post!'

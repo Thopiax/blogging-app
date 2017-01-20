@@ -15,6 +15,23 @@
 //= require turbolinks
 //= require_tree .
 
-$('.post_form').submit(function() {
-  return false;
+// Create a variable to store the "shift state" (whether it is pressed or not)
+shiftOn = false;
+
+$(document).ready(function() {
+
+  $(window).on('keypress', function(event) {
+
+    shiftOn = event.shiftKey;
+
+    if (event.keyCode == 13) {
+        if (shiftOn) {
+            $('#new_post').submit();
+        } else {
+            event.preventDefault();
+            var post_content = $('#post_content > textarea').val();
+            $('#post_content > textarea').val( post_content + "\n" );
+        }
+    }
+  });
 });
