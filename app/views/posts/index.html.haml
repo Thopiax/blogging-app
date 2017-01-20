@@ -1,11 +1,21 @@
 .site_wrapper
-    = render 'form'
-        
-    .timeline
-        - @posts.reverse_each do |post|
-            .post
-                .post_message
-                    / Use simple_format to ensure that new lines are displayed in the message.
-                    =  simple_format(post.message)
-                .post_time
-                    = time_ago_in_words(post.created_at) + " ago."
+  %h1
+    The Best Blogging Service
+  = render 'form'       
+  .timeline
+    %h2
+      Your Timeline
+    - if @posts.length == 0
+      %p
+        Your timeline seems to be empty! Write something in the form above.
+    - else
+      - @posts.reverse_each do |post|
+        .post
+          .post_message
+            / Use simple_format to ensure that new lines are displayed in the message.
+            = simple_format(post.message)
+          .post_footer
+            .post_delete_button
+              = button_to "Delete", post_path(post), method: :delete
+            .post_time
+              = 'posted ' + time_ago_in_words(post.created_at) + ' ago.'

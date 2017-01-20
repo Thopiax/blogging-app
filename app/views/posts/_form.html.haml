@@ -1,22 +1,25 @@
 .post_form
-
-  - if @post.errors.any?
-    .error_message
-      %h4 
-        Oops...
-      %ul.errors
-        - @post.errors.full_messages.each do |msg|
-          %li= msg
-
-  = form_for(@post) do |f|
-    - if flash[:notice]
+  .notifications
+    - if @post.errors.any?
+      .error_message
+        %h3
+          Oops...
+        %ul.errors
+          - @post.errors.full_messages.each do |msg|
+            .error
+              %li= msg
+    - elsif flash[:notice]
       .notice
         = flash[:notice] 
     - elsif flash[:error]
       .error
         = flash[:error]
+    - else
+      .normal
+        Have something on your mind? Post it!
 
-    #post_content.field
+  = form_for(@post) do |f|
+    #form_post_text.field
       = f.text_area :message, placeholder: 'Write something interesting here...', autofocus: true
-    #post_submit.actions
+    #form_post_submit.actions
       = f.submit 'Post!'

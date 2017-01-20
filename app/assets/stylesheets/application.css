@@ -14,48 +14,106 @@
  *= require_self
  */
 
+body {
+  margin: 0;
+  background-color: rgb(243, 246, 247);
+}
+
+h1, h2, .notifications {
+  text-align: center;
+}
+
+ul {
+  list-style: none;
+  -webkit-padding-start: 0;
+  padding-start:  0;
+}
+
 .site_wrapper {
-    width:  30%;
-    margin-left: 35%;
-    font-size: 1.25rem;
+  font-family: Tahoma, Geneva, sans-serif;
+  width:  40%;
+  margin-left: 30%;
+  margin-top: 0;
+  padding: 1em;
+  font-size: 1.25rem;
+  box-sizing : border-box;
+  background-color: rgb(  236, 240, 241);
+  box-shadow: 3px 10px 20px black;
+  min-height: 100vh;
+}
+
+input[type="submit"] {
+  border: none;
+  background-color: rgba(46, 204, 113, 0.7);
+  width: 100%;
+  border-radius: 7px;
+  border:  1px solid rgb(46, 204, 113);
 }
 
 .post_form {
-    width: 100%;
+  width: 100%;
 }
 
-#post_submit {
-    width: 20%;
-    text-align: center;
+#form_post_submit {
+  width: 100%;
+  text-align: center;
 }
 
-.post, #post_content textarea, .error_message {
-    width: 100%;
-    margin: 1em 0;
+#form_post_submit input {
+  padding: 1em;
+  margin-bottom: 2em;
+  font-size: 1.25rem;
 }
 
-#post_content textarea {
-    height: 150px;
-    margin-bottom: 0;
-    box-sizing : border-box;
-    font-size: 1.25rem;
+
+.post, #form_post_text textarea, .error_message {
+  width: 100%;
+  margin: 1em 0;
+}
+
+#form_post_text textarea {
+  height: 150px;
+  box-sizing : border-box;
+  font-size: 1.25rem;
 }
 
 .post {
-    min-height: 100px;
-    height: auto;
-    background-color: grey;
+  min-height: 120px;
+  padding: 0.5em;
+  box-sizing : border-box;
+  height: auto;
+  background-color: rgba(46, 204, 113,0.3);
+  border: 1px solid rgba(46, 204, 113,0.7);
+  border-radius: 4px;
 }
 
-.post_message, .post_time {
-    display: block;
+.post_message, .post_footer {
+  display: block;
+}
+
+.post_delete_button, .post_time {
+  display: inline-block;
 }
 
 .field_with_errors textarea {
-    border:  1px #cc0000 solid;
-    background: rgba(204, 0, 0, 0.2);
+  border:  1px rgb(204, 0, 0) solid;
+  background: rgba(204, 0, 0, 0.1);
+}
+
+.post_delete_button {
+  width: 20%;
+}
+
+.notice {
+  color: rgb(46, 204, 113);
+}
+
+.error {
+  color: rgb(204, 0, 0);
 }
 
 .post_time {
-    text-align: right;
+  float:  right;
+  text-align: right;
+  width: 70%;
 }

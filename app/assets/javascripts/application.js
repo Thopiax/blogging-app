@@ -25,13 +25,14 @@ $(document).ready(function() {
     shiftOn = event.shiftKey;
 
     if (event.keyCode == 13) {
-        if (shiftOn) {
-            $('#new_post').submit();
-        } else {
-            event.preventDefault();
-            var post_content = $('#post_content > textarea').val();
-            $('#post_content > textarea').val( post_content + "\n" );
-        }
+      if (shiftOn) {
+          $('#new_post').submit();
+      } else {
+        event.preventDefault();
+        var txtArea = $('#form_post_text').find('textarea')
+        var postContent = txtArea.val();
+        txtArea.val( postContent + "\n" );
+      }
     }
   });
 });
