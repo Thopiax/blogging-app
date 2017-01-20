@@ -9,22 +9,18 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_content)
-    if @post.valid?
-      respond_to do |format|
-        if @post.save
-          format.html do
-            redirect_to posts_path, notice: "Successufully created your post!" 
-          end
-        else
-          format.html do
-            @products = Post.all
-            flash.now[:error] = 'Couldn\'t create the post!'
-            render action: 'index'
-          end
+    respond_to do |format|
+      if @post.save
+        format.html do
+          redirect_to posts_path, notice: "Successufully created your post!" 
+        end
+      else
+        format.html do
+          @posts = Post.all
+          flash.now[:error] = 'Couldn\'t create the post!'
+          render action: 'index'
         end
       end
-    else
-      render action: 'index'
     end
   end
 

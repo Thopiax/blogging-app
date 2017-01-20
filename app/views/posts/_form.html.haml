@@ -1,13 +1,13 @@
 .post_form
-  = form_for(@post) do |f|
-    - if @post.errors.any?
-      .error_message
-        %h4 
-          Oops...
-        %ul.errors
-          - @post.errors.full_messages.each do |msg|
-            %li= msg
+  - if @post.errors.any?
+    .error_message
+      %h4 
+        Oops...
+      %ul.errors
+        - @post.errors.full_messages.each do |msg|
+          %li= msg
 
+  = form_for(@post) do |f|
     - if flash[:notice]
       .notice
         = flash[:notice] 
