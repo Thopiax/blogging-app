@@ -1,0 +1,10 @@
+.site_wrapper
+    = render 'form'
+        
+    .timeline
+        - @posts.reverse_each do |post|
+            .post
+                .post_message
+                    = post.message
+                .post_time
+                    = time_ago_in_words(post.created_at) + " ago."

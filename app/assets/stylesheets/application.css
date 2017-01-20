@@ -13,3 +13,42 @@
  *= require_tree .
  *= require_self
  */
+
+.site_wrapper {
+    width:  30%;
+    margin-left: 35%;
+}
+
+.post_form {
+    width: 100%;
+}
+
+.post_content input {
+    width: 100%;
+    height:  100px;
+}
+
+.post_submit {
+    width: 20%;
+    margin: 1em 40%;
+}
+
+.post {
+    width: 90%;
+    margin: 1em 5%;
+    min-height: 100px;
+    height: auto;
+    display:  table;
+    background-color: grey;
+}
+
+.post_message {
+    padding:  1em;
+}
+
+.post_time {
+    text-align: right;
+    display: table-cell;
+    vertical-align: bottom;
+    padding: 0.5em;
+}
