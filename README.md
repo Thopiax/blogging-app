@@ -4,11 +4,12 @@ This is the Best Blogging Service. It is a simple, yet beautiful service that
 allows you to put all your thoughts into words and much more!
 
 ### Getting it to run
-Run the application in 4 simple steps:
+Run the application in 5 simple steps:
   1. Open you terminal and go to the root directory of the app.
-  2. Run `rails server`.
-  3. Open your favorite web browser to `http://localhost:3000`
-  4. Voila!
+  2. Run `rake db:create` followed by `rake db:migrate` to set up the database.
+  3. Run `rails server`.
+  4. Open your favorite web browser to `http://localhost:3000`
+  5. Voila!
 
 ### Testing it
 Test the application easily:
