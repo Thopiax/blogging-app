@@ -17,9 +17,10 @@ class ApiController < ApplicationController
     sentiment_emoji = get_sentiment_emoji sentiment
 
     # Convert keywords into images
+    number_of_images = 5
     images = []
     keywords.each do |keyword|
-      images.push(get_images(keyword))
+      images.push(get_images(keyword, number_of_images))
     end
 
     result = {
@@ -50,7 +51,13 @@ class ApiController < ApplicationController
   def get_emojis txt
   end
 
-  def get_images keyword
+  def get_images(keyword, number_of_images)
+    results = GoogleCustomSearchApi.search(keyword, limit: number_of_images, searchType: "image")
+    images = []
+    results["items"].each do |item|
+      images << item["link"]
+    end
+    return images
   end
 
   def get_sentiment(txt)
