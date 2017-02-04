@@ -20,6 +20,10 @@ class PostsController < ApplicationController
     end
   end
 
+  def get_api(url)
+    
+  end
+
   def destroy
     @post = Post.find(params[:id])
     @post.destroy
