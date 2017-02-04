@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require emoji-translate/emoji-translate
 //= require emojilib/emojis
+//= require velocity
 //= require_tree .
 
 // Create a variable to store the "shift state" (whether it is pressed or not)
@@ -50,13 +51,13 @@ function emojifyPosts() {
 }
 
 function convertToEmoji(text) {
-  var result = "";
-  for (word of text.split(" ")) {
-    var emoji = getMeAnEmoji(word)[0];
-    if (emoji == null || emoji === "") {
-      emoji = word
+  var input = text.split(" ");
+  for (var i = 0; i < input.length; i++) {
+    var emoji = getMeAnEmoji(input[i])[0];
+    if (emoji != null && emoji !== "" && emoji !== input[i].toLowerCase() ) {
+      console.log(emoji);
+      input[i] = emoji;
     }
-    result += (emoji + " ");
   }
-  return result;
+  return input.join(" ");
 }

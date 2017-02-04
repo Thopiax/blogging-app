@@ -2,15 +2,13 @@
   .notifications
     - if @post.errors.any?
       .error_message
-        %h3
-          Oops...
         %ul.errors
           - @post.errors.full_messages.each do |msg|
             .error
               %li= msg
     - elsif flash[:notice]
       .notice
-        = flash[:notice] 
+        = flash[:notice]
     - elsif flash[:error]
       .error
         = flash[:error]
@@ -20,8 +18,6 @@
 
   = form_for(@post) do |f|
     #form_post_text.field
-      = f.text_area :message, placeholder: 'Write something interesting here...', autofocus: true
-    %p
-      Use Shift+Enter to submit the form.
+      = f.text_area :message, placeholder: 'Get it off your chest...', autofocus: true
     #form_post_submit.actions
-      = f.submit 'Post!'
+      = f.submit 'Remember this!'

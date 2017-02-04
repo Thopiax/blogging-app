@@ -1,0 +1,63 @@
+@import "util.scss";
+
+#diary {
+  width: 100%;
+  height: 100%;
+  display: table-cell;
+  vertical-align: middle;
+
+  ul {
+    list-style: none;
+    -webkit-padding-start: 0;
+  }
+
+  input[type="submit"] {
+    border: none;
+    background-color: $main_color;
+    width: 100%;
+    border-radius: 0 0 10px 10px;
+    margin-top: -4px;
+    border:  1px solid darken($main_color, 3%);
+    color: white;
+  }
+
+  .post_form {
+    width: 100%;
+    p {
+      margin: 0;
+      margin-bottom: 1em;
+      font-size: 1rem;
+    }
+
+    .error_message, .errors {
+      margin: 0;
+    }
+  }
+
+  #form_post_submit {
+    width: 100%;
+    text-align: center;
+  }
+
+  #form_post_submit input {
+    padding: 1em;
+    margin-bottom: 2em;
+    font-size: 1.25rem;
+  }
+
+  .post, #form_post_text textarea, .error_message {
+    width: 100%;
+    margin: 1em 0;
+  }
+
+  #form_post_text textarea {
+    height: 150px;
+    box-sizing : border-box;
+    border: 0 solid;
+    font-size: 1.25rem;
+    margin-bottom: 0;
+    border-radius: 10px 10px 0 0;
+    padding: 1em;
+  }
+
+}
