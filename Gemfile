@@ -58,6 +58,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bdd-rails', path: 'vendor/gems/'
 
+gem 'color'
 # For image searching
 gem "google_custom_search_api"
 
