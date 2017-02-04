@@ -30,7 +30,7 @@ $(document).ready(function() {
 
   $(window).on('keyup', function(event) {
     var postContent = txtArea.val();
-    
+
     if (postContent === "" && protoOn) {
       diary_table.css("height", "100%");
       protoOn = false;
@@ -49,6 +49,7 @@ $(document).ready(function() {
       if (shiftOn) {
         event.preventDefault();
         txtArea.val( postContent + "\n" );
+        buildPost();
       } else {
         $('#new_post').submit();
       }
@@ -56,9 +57,28 @@ $(document).ready(function() {
   });
 
   $(window).on('load', emojifyPosts);
+
+  //txtArea.on('change keyup press', buildPost);
+
   $('#new_post').submit(emojifyPosts);
 
 });
+
+function buildPost() {
+  var text = $('textarea').val();
+  $('#prototype .post_content').html(text);
+  alert(encodeURIComponent(text));
+  var result = $.getJSON('api/analyze_text/' + encodeURIComponent(text), function(result) {
+    $('#prototype').velocity(
+      {'background-color': result['sentimentColour']},
+      {duration: 1200}
+    );
+
+    $('#prototype .post_emojis').html(convertToEmoji(text));
+
+    $('.sentiment_emoji').html(getSentEmoji(result['sentiment']));
+  });
+}
 
 function emojifyPosts() {
   $(".post_message").each(function() {
@@ -70,28 +90,28 @@ function emojifyPosts() {
 
 function convertToEmoji(text) {
   var input = text.split(" ");
+  var output = ""
   for (var i = 0; i < input.length; i++) {
     var emoji = getMeAnEmoji(input[i])[0];
     if (emoji != null && emoji !== "" && emoji !== input[i].toLowerCase() ) {
-      console.log(emoji);
-      input[i] = emoji;
+      output += emoji;
     }
   }
-  return input.join(" ");
+  return output;
 }
 
 function getSentEmoji(sent) {
   var emoji = "";
   if(sent < 0.2) {
-    emoji = AllEmojis.grimacing;
+    emoji = getMeAnEmoji('sob');
   } else if (sent < 0.4) {
-    emoji = AllEmojis.disappointed;
-  } else if (sent < 0.6) {
-    emoji = AllEmojis.neutral_face;
+    emoji = getMeAnEmoji('sad');
+  } else if (sent < 0.5) {
+    emoji = getMeAnEmoji('neutral_face');
   } else if (sent < 0.8) {
-    emoji = AllEmojis.smiley;
+    emoji = getMeAnEmoji('smiley');
   } else if (sent < 1.0) {
-    emoji = AllEmojis.grinning;
+    emoji = getMeAnEmoji('grinning');
   }
   return emoji;
 }
