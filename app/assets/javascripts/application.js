@@ -27,20 +27,19 @@ $(document).ready(function() {
 
   var diary_table = $("#diary_table");
   var txtArea = $('#form_post_text').find('textarea');
+  var owl = $('#logo').find('img');
 
-  $(window).on('keyup', function(event) {
+  $(txtArea).on('keyup', function(event) {
     var postContent = txtArea.val();
-    
     if (postContent === "" && protoOn) {
-      diary_table.css("height", "100%");
-      protoOn = false;
-    } else if (!protoOn) {
-      diary_table.css("height", "50%");
-      protoOn = true;
+      protoOn = unsetProto();
+    } else if (!protoOn && event.keyCode != 8) {
+      protoOn = setProto();
     }
+
   })
 
-  $(window).on('keypress', function(event) {
+  $(txtArea).on('keypress', function(event) {
 
     var postContent = txtArea.val();
 
@@ -57,6 +56,20 @@ $(document).ready(function() {
 
   $(window).on('load', emojifyPosts);
   $('#new_post').submit(emojifyPosts);
+
+  function unsetProto() {
+    diary_table.css("height", "100%");
+    owl.css("width", "50%");
+    owl.css("margin-left", "25%");
+    return false;
+  }
+
+  function setProto() {
+    diary_table.css("height", "50%");
+    owl.css("width", "20%");
+    owl.css("margin-left", "40%");
+    return true;
+  }
 
 });
 
