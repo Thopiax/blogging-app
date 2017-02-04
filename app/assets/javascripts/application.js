@@ -13,6 +13,9 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require emoji-translate/emoji-translate
+//= require emojilib/emojis
+//= require velocity
 //= require_tree .
 //= require emoji-translate
 //= require pusher
@@ -24,16 +27,55 @@ $(document).ready(function() {
 
   $(window).on('keypress', function(event) {
     shiftOn = event.shiftKey;
-
     if (event.keyCode == 13) {
       if (shiftOn) {
-          $('#new_post').submit();
-      } else {
         event.preventDefault();
-        var txtArea = $('#form_post_text').find('textarea')
+        var txtArea = $('#form_post_text').find('textarea');
         var postContent = txtArea.val();
         txtArea.val( postContent + "\n" );
+      } else {
+        $('#new_post').submit();
       }
     }
   });
+
+  $(window).on('load', emojifyPosts);
+  $('#new_post').submit(emojifyPosts);
+
 });
+
+function emojifyPosts() {
+  $(".post_message").each(function() {
+    var post = $(this).find('p');
+    var postContent = post.text();
+    post.text(convertToEmoji(postContent));
+  });
+}
+
+function convertToEmoji(text) {
+  var input = text.split(" ");
+  for (var i = 0; i < input.length; i++) {
+    var emoji = getMeAnEmoji(input[i])[0];
+    if (emoji != null && emoji !== "" && emoji !== input[i].toLowerCase() ) {
+      console.log(emoji);
+      input[i] = emoji;
+    }
+  }
+  return input.join(" ");
+}
+
+function getSentEmoji(sent) {
+  var emoji = "";
+  if(sent < 0.2) {
+    emoji = AllEmojis.grimacing;
+  } else if (sent < 0.4) {
+    emoji = AllEmojis.disappointed;
+  } else if (sent < 0.6) {
+    emoji = AllEmojis.neutral_face;
+  } else if (sent < 0.8) {
+    emoji = AllEmojis.smiley;
+  } else if (sent < 1.0) {
+    emoji = AllEmojis.grinning;
+  }
+  return emoji;
+}
