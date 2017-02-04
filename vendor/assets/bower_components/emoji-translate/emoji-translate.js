@@ -7,17 +7,9 @@ var SYMBOLS = '!"#$%&\'()*+,-./:;<=>?@[]^_`{|}~';
  * @event emoji-ready
  */
 (function() {
-  var request = new XMLHttpRequest();
-  request.open('GET', 'bower_components/emojilib/emojis.json', true);
-  request.onload = function() {
-    if (request.status >= 200 && request.status < 400) {
-      allEmojis = JSON.parse(request.response);
-      var event = document.createEvent('HTMLEvents');
-      event.initEvent('emoji-ready', true, false);
-      document.dispatchEvent(event);
-    }
-  };
-  request.send();
+  var event = document.createEvent('HTMLEvents');
+  event.initEvent('emoji-ready', true, false);
+  document.dispatchEvent(event);
 })();
 
 /**

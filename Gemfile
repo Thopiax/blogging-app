@@ -1,4 +1,5 @@
 source 'https://rubygems.org'
+ruby '2.3.1'
 
 git_source(:github) do |repo_name|
   repo_name = "#{repo_name}/#{repo_name}" unless repo_name.include?("/")
@@ -22,6 +23,7 @@ gem 'coffee-rails', '~> 4.2'
 # gem 'therubyracer', platforms: :ruby
 gem 'haml-rails'
 gem 'html2haml'
+gem 'bower-rails'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'
@@ -57,6 +59,9 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bdd-rails', path: 'vendor/gems/'
 
 gem 'color'
+# For image searching
+gem "google_custom_search_api"
+
 group :test do
   gem 'capybara'
   gem 'database_cleaner'

@@ -1,3 +1,6 @@
+require "addressable/uri"
+require 'google_custom_search_api'
+
 # Below is a class controlling the creation, presentation
 # and deletion of messages
 class PostsController < ApplicationController

@@ -13,6 +13,8 @@
 //= require jquery
 //= require jquery_ujs
 //= require turbolinks
+//= require emoji-translate/emoji-translate
+//= require emojilib/emojis
 //= require_tree .
 
 // Create a variable to store the "shift state" (whether it is pressed or not)
@@ -22,16 +24,39 @@ $(document).ready(function() {
 
   $(window).on('keypress', function(event) {
     shiftOn = event.shiftKey;
-
     if (event.keyCode == 13) {
       if (shiftOn) {
-          $('#new_post').submit();
-      } else {
         event.preventDefault();
-        var txtArea = $('#form_post_text').find('textarea')
+        var txtArea = $('#form_post_text').find('textarea');
         var postContent = txtArea.val();
         txtArea.val( postContent + "\n" );
+      } else {
+        $('#new_post').submit();
       }
     }
   });
+
+  $(window).on('load', emojifyPosts);
+  $('#new_post').submit(emojifyPosts);
+
 });
+
+function emojifyPosts() {
+  $(".post_message").each(function() {
+    var post = $(this).find('p');
+    var postContent = post.text();
+    post.text(convertToEmoji(postContent));
+  });
+}
+
+function convertToEmoji(text) {
+  var result = "";
+  for (word of text.split(" ")) {
+    var emoji = getMeAnEmoji(word)[0];
+    if (emoji == null || emoji === "") {
+      emoji = word
+    }
+    result += (emoji + " ");
+  }
+  return result;
+}
