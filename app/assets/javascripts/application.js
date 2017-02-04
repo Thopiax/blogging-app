@@ -22,7 +22,6 @@ shiftOn = false;
 $(document).ready(function() {
 
   $(window).on('keypress', function(event) {
-
     shiftOn = event.shiftKey;
 
     if (event.keyCode == 13) {
