@@ -6,6 +6,7 @@
 
 # Ignore bundler config.
 /.bundle
+Gemfile.lock
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
@@ -19,5 +20,3 @@
 
 # Ignore Byebug command history file.
 .byebug_history
-
-Gemfile.lock
