@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require_tree .
 //= require emoji-translate
+//= require pusher
 
 // Create a variable to store the "shift state" (whether it is pressed or not)
 shiftOn = false;
