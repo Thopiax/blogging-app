@@ -1,5 +1,6 @@
 require 'net/http'
 require 'json'
+require 'color'
 
 class ApiController < ApplicationController
   API_KEY = '7306f2408fe74ed1a93130ed418784b0'.freeze
@@ -7,41 +8,63 @@ class ApiController < ApplicationController
   API_ENDPOINT_KEYWORDS = 'https://westus.api.cognitive.microsoft.com/text/analytics/v2.0/keyphrases'.freeze
 
   def analyze_text
-    # Analyze sentiment
-    # Analyze keywords
+    txt = params[:txt]
+    # Analyze keywords and sentiment
+    sentiment = get_sentiment txt
+    keywords = get_keywords txt
+    emojis = get_emojis txt
+    sentiment_colour = get_sentiment_colour sentiment
+    sentiment_emoji = get_sentiment_emoji sentiment
+
     # Convert keywords into images
-    # Convert text into emojis
-    # Return json with list of images, list of emojis, sentiment
-    render :json => get_keywords('i went to imperial college london today to study computer science')
+    images = []
+    keywords.each do |keyword|
+      images.push(get_images(keyword))
+    end
+
+    result = {
+      keywords: keywords,
+      sentiment: sentiment,
+      sentimentColour: sentiment_colour,
+      sentimentEmoji: sentiment_emoji,
+      images: images,
+      emojis: emojis
+    }
+
+    render :json => result
   end
 
   private
+  def get_sentiment_colour sentiment
+    hue = sentiment * 120
+    saturation = 50
+    lightness = 50
+    color = Color::HSL.new(hue, saturation, lightness)
+    color.html
+  end
+
+  def get_sentiment_emoji sentiment
+
+  end
+
+  def get_emojis txt
+  end
+
+  def get_images keyword
+  end
 
   def get_sentiment(txt)
-    uri = URI(API_ENDPOINT_SENTIMENT)
-    uri.query = URI.encode_www_form({})
-
-    request = Net::HTTP::Post.new(uri.request_uri)
-    request['Content-Type'] = 'application/json'
-    request['Ocp-Apim-Subscription-Key'] = API_KEY
-    request.body = {
-      documents: [{
-        language: 'en',
-        id: '0',
-        text: txt
-      }]
-    }.to_json
-
-    response = Net::HTTP.start(uri.host, uri.port, use_ssl: uri.scheme == 'https') do |http|
-      http.request(request)
-    end
-
-    result = JSON.parse(response.body)
+    result = send_request(API_ENDPOINT_SENTIMENT, txt)
     result['documents'][0]['score']
   end
 
   def get_keywords(txt)
-    uri = URI(API_ENDPOINT_KEYWORDS)
+    result = send_request(API_ENDPOINT_KEYWORDS, txt)
+    result['documents'][0]['keyPhrases']
+  end
+
+  def send_request(endpoint, txt)
+    uri = URI(endpoint)
     uri.query = URI.encode_www_form({})
 
     request = Net::HTTP::Post.new(uri.request_uri)
@@ -59,7 +82,6 @@ class ApiController < ApplicationController
       http.request(request)
     end
 
-    result = JSON.parse(response.body)
-    result['documents'][0]['keyPhrases']
+    JSON.parse(response.body)
   end
 end

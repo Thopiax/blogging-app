@@ -56,6 +56,7 @@ end
 gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
 gem 'bdd-rails', path: 'vendor/gems/'
 
+gem 'color'
 group :test do
   gem 'capybara'
   gem 'database_cleaner'
