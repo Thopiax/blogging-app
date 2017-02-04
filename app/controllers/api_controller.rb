@@ -42,13 +42,6 @@ class ApiController < ApplicationController
     color.html
   end
 
-  def get_sentiment_emoji sentiment
-
-  end
-
-  def get_emojis txt
-  end
-
   def get_images(keyword, number_of_images)
     results = GoogleCustomSearchApi.search(keyword, limit: number_of_images, searchType: "image")
     images = []
