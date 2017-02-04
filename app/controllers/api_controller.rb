@@ -26,9 +26,7 @@ class ApiController < ApplicationController
       keywords: keywords,
       sentiment: sentiment,
       sentimentColour: sentiment_colour,
-      sentimentEmoji: sentiment_emoji,
       images: images,
-      emojis: emojis
     }
 
     render :json => result
