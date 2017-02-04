@@ -20,16 +20,33 @@
 
 // Create a variable to store the "shift state" (whether it is pressed or not)
 shiftOn = false;
+protoOn = false;
 
 $(document).ready(function() {
 
+  var diary_table = $("#diary_table");
+  var txtArea = $('#form_post_text').find('textarea');
+
+  $(window).on('keyup', function(event) {
+    var postContent = txtArea.val();
+    
+    if (postContent === "" && protoOn) {
+      diary_table.css("height", "100%");
+      protoOn = false;
+    } else if (!protoOn) {
+      diary_table.css("height", "50%");
+      protoOn = true;
+    }
+  })
+
   $(window).on('keypress', function(event) {
+
+    var postContent = txtArea.val();
+
     shiftOn = event.shiftKey;
     if (event.keyCode == 13) {
       if (shiftOn) {
         event.preventDefault();
-        var txtArea = $('#form_post_text').find('textarea');
-        var postContent = txtArea.val();
         txtArea.val( postContent + "\n" );
       } else {
         $('#new_post').submit();
