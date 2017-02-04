@@ -8,7 +8,6 @@ body {
 }
 
 #home {
-  height: 100vh;
 }
 
 #main {
@@ -43,6 +42,10 @@ h1, h2, .notifications {
   background-color: rgba($main_color, 0.3);
   border: 1px solid rgba($main_color, 0.7);
   border-radius: 4px;
+}
+
+.post_emojis {
+  height: 50px;
 }
 
 .post_message, .post_footer {
@@ -82,4 +85,17 @@ h1, h2, .notifications {
     width: 50%;
     margin-left: 25%;
   }
+
+.sentiment_emoji {
+  font-size: 65pt;
+  text-align: center;
+}
+
+.post_emojis {
+
+}
+
+#prototype {
+  width: 100%;
+  height: 200px;
 }

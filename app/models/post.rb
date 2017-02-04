@@ -1,5 +1,5 @@
 # Model for the posts in the blogging service
 class Post < ActiveRecord::Base
-  validates :message, presence: true, length: { maximum: 150 }
+  validates :message, presence: true, length: { maximum: 9999999 }
   has_many :keywords
 end
