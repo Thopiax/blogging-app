@@ -1,0 +1,21 @@
+{
+  "name": "memoirs",
+  "homepage": "https://github.com/Thopiax/blogging-app",
+  "authors": [
+    "Rafael Toletti Ballestiero <rb2215@ic.ac.uk>",
+    "Robbie Holland",
+    "Norbert Podsadowski",
+    "Andrew Percy"
+  ],
+  "description": "ICHack app",
+  "main": "app",
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

@@ -14,6 +14,7 @@
 //= require jquery_ujs
 //= require turbolinks
 //= require_tree .
+//= require emoji-translate
 
 // Create a variable to store the "shift state" (whether it is pressed or not)
 shiftOn = false;
