@@ -60,3 +60,19 @@ function convertToEmoji(text) {
   }
   return result;
 }
+
+function getSentEmoji(sent) {
+  var emoji = "";
+  if(sent < 0.2) {
+    emoji = AllEmojis.grimacing;
+  } else if (sent < 0.4) {
+    emoji = AllEmojis.disappointed;
+  } else if (sent < 0.6) {
+    emoji = AllEmojis.neutral_face;
+  } else if (sent < 0.8) {
+    emoji = AllEmojis.smiley;
+  } else if (sent < 1.0) {
+    emoji = AllEmojis.grinning;
+  }
+  return emoji;
+}
