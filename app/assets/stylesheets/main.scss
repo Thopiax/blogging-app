@@ -9,9 +9,10 @@ body {
 
 #home {
   display: inline-block;
+  width: 100%;
 }
 
-#home, .timeline {
+.timeline {
   width:  50%;
   margin-left: 25%;
   margin-top: 0;

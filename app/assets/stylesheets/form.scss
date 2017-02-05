@@ -25,8 +25,22 @@
     color: white;
   }
 
+  #prompts, #carousel, .post_form {
+    display: inline-block;
+  }
+
+  #prompts {
+    width: 20%;
+    margin: 2.5%;
+  }
+
+  #carousel {
+    width: 20%;
+    margin: 2.5%;
+  }
+
   .post_form {
-    width: 100%;
+    width: 50%;
     p {
       margin: 0;
       margin-bottom: 1em;

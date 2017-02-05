@@ -94,6 +94,7 @@ function buildPost() {
     $(".keyword").find("p").text('');
     $(".images").find("img").attr('src', '');
     if (result.keywords[0] !== "") {
+      console.log(result.keywords);
       for (var i = 0; i < result.keywords.length; i++) {
         $(".keyword").find("p").text(result.keywords[i]);
         // TODO: implement below
@@ -129,16 +130,16 @@ function convertToEmoji(text) {
 
 function getSentEmoji(sent) {
   var emoji = "";
-  if(sent < 0.2) {
+  if(sent < 0.15) {
     emoji = getMeAnEmoji('sob');
-  } else if (sent < 0.4) {
+  } else if (sent < 0.3) {
     emoji = getMeAnEmoji('sad');
-  } else if (sent < 0.5) {
+  } else if (sent < 0.6) {
     emoji = getMeAnEmoji('neutral_face');
   } else if (sent < 0.8) {
     emoji = getMeAnEmoji('smiley');
   } else if (sent < 1.0) {
     emoji = getMeAnEmoji('grinning');
   }
-  return emoji;
+  return emoji[0];
 }
