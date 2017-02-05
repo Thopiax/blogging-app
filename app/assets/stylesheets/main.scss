@@ -42,10 +42,37 @@ h1, h2, .notifications {
   background-color: rgba($main_color, 0.3);
   border: 1px solid rgba($main_color, 0.7);
   border-radius: 4px;
+  margin-bottom: 17px;
+}
+
+.post_datetime {
+  background-color: gray;
+  border: 1px solid black;
+  border-radius: 4px;
+  text-align: center;
+  margin: 5px;
+  padding: 5px;
+}
+
+.post_date {
+  font-size: 30px;
+}
+
+.post_time {
+  font-size: 20px;
+}
+
+.post_content {
+  height: 100%;
 }
 
 .post_emojis {
-  height: 50px;
+  font-size: 30px;
+}
+
+.post_sentiment_emoji {
+  font-size: 65pt;
+  text-align: center;
 }
 
 .post_message, .post_footer {
@@ -73,11 +100,6 @@ h1, h2, .notifications {
   color: rgb(204, 0, 0);
 }
 
-.post_time {
-  float:  right;
-  text-align: right;
-  width: 70%;
-}
 
 #logo {
   img {
@@ -85,18 +107,4 @@ h1, h2, .notifications {
     width: 50%;
     margin-left: 25%;
   }
-}
-
-.sentiment_emoji {
-  font-size: 65pt;
-  text-align: center;
-}
-
-.post_emojis {
-
-}
-
-#prototype {
-  width: 100%;
-  height: 200px;
 }

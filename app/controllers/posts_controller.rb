@@ -35,6 +35,8 @@ class PostsController < ApplicationController
   def set_posts
     # define this variable for the root path and after creating a new message
     @posts = Post.all
+    @current_date = Time.now.strftime("%d %b")
+    @current_time = Time.now.strftime("%l:%M%P")
   end
 
   def post_content

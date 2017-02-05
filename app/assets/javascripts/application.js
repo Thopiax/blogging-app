@@ -17,7 +17,6 @@
 //= require emojilib/emojis
 //= require velocity
 //= require_tree .
-//= require emoji-translate
 
 // Create a variable to store the "shift state" (whether it is pressed or not)
 shiftOn = false;
@@ -80,7 +79,6 @@ $(document).ready(function() {
 function buildPost() {
   var text = $('textarea').val();
   $('#prototype .post_content').html(text);
-  alert(encodeURIComponent(text));
   var result = $.getJSON('api/analyze_text/' + encodeURIComponent(text), function(result) {
     $('#prototype').velocity(
       {'background-color': result['sentimentColour']},
@@ -89,7 +87,7 @@ function buildPost() {
 
     $('#prototype .post_emojis').html(convertToEmoji(text));
 
-    $('.sentiment_emoji').html(getSentEmoji(result['sentiment']));
+    $('.post_sentiment_emoji').html(getSentEmoji(result['sentiment']));
   });
 }
 
