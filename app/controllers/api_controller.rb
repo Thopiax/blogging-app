@@ -12,9 +12,7 @@ class ApiController < ApplicationController
     # Analyze keywords and sentiment
     sentiment = get_sentiment txt
     keywords = get_keywords txt
-    emojis = get_emojis txt
     sentiment_colour = get_sentiment_colour sentiment
-    sentiment_emoji = get_sentiment_emoji sentiment
 
     # Convert keywords into images
     number_of_images = 5
