@@ -17,7 +17,7 @@ class ApiController < ApplicationController
     # Convert keywords into images
     images = []
     keywords.each do |keyword|
-      images.push("https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png")
+      images.push(get_images(keyword, 1))
     end
 
     result = {
