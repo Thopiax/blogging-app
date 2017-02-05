@@ -10,7 +10,6 @@ body {
 #home {
   display: inline-block;
   width: 100%;
-  height: 100vh;
 }
 
 .timeline, #proto {
@@ -18,11 +17,16 @@ body {
   padding: 1em;
   font-size: 1.25rem;
   box-sizing : border-box;
-  // min-height: 100vh;
 }
 
 #proto {
   height: 50%;
+}
+
+#prototype {
+  min-height: 120px;
+  opacity: 0;
+  transition: 0.3s;
 }
 
 .table {
