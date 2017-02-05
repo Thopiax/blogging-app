@@ -11,9 +11,10 @@ body {
   display: inline-block;
   width: 100%;
   max-width: 100vw;
+  height: 100vh;
 }
 
-.timeline, #proto {
+.timeline, #proto, #diary {
   margin-top: 0;
   padding: 1em;
   font-size: 1.25rem;
@@ -122,4 +123,14 @@ h1, h2, .notifications {
   display: inline-block;
   position: absolute;
   transition: 1s;
+}
+
+.command, .keyword {
+  display: inline-block;
+  height: 1em;
+  margin: auto;
+}
+
+.command {
+  background: black;
 }

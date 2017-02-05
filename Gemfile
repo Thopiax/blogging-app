@@ -24,6 +24,7 @@ gem 'coffee-rails', '~> 4.2'
 gem 'haml-rails'
 gem 'html2haml'
 gem 'bower-rails'
+gem 'evil_icons'
 
 # Use jquery as the JavaScript library
 gem 'jquery-rails'

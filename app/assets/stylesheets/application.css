@@ -12,4 +12,6 @@
  *
  *= require_tree .
  *= require_self
+ *= require evil-icons
+ *= require bootstrap/dist/css/bootstrap.min
  */

@@ -15,6 +15,7 @@
 //= require turbolinks
 //= require emoji-translate/emoji-translate
 //= require emojilib/emojis
+//= require bootstrap/dist/js/bootstrap.min
 //= require velocity
 //= require_tree .
 
@@ -28,9 +29,9 @@ $(document).ready(function() {
   $("#imageCarousel").simplecarousel({
         next: $('.next'),
         prev: $('.prev'),
-        auto: 5000,
+        slidespeed: 400,
         width: 480,
-        height: 280
+        height: 280,
     });
 
   var diary_table = $("#diary_table");

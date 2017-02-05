@@ -5,14 +5,7 @@
         #diary
           #prompts
           = render 'form'
-          #carousel
-            .keyword
-              %p
-            %ul#imageCarousel
-              - (0..2).each do |i|
-                %li{id: "image#{i}"}
-                  = image_tag '', alt: ""
-
+          
       #prototype.post
         .row
           .col-md-2
@@ -23,6 +16,17 @@
                 #{@current_time}
           .col-md-8
             .post_content
+            #carousel
+              %a.prev.command
+                = evil_icon 'ei-arrow-left'
+              .keyword
+                %p
+              %a.next.command
+                = evil_icon 'ei-arrow-right'
+              %ul#imageCarousel
+                - (0..2).each do |i|
+                  %li{id: "image#{i}"}
+                    = image_tag '', alt: ""
           .col-md-2
             .post_sentiment_emoji
               😐
