@@ -1,9 +1,9 @@
 # Model for the posts in the blogging service
 class Post < ActiveRecord::Base
   validates :message, presence: true, length: { maximum: 9999999 }
-  validates :sentiment
-  validates :emojis
-  validates :sent_emoji
+  validates :sentiment, presence: true
+  validates :sent_emoji, presence: true
+  validate  :emojis
   has_many :keywords
 
   # after_initialize :init

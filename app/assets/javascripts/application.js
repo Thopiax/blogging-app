@@ -63,7 +63,7 @@ $(document).ready(function() {
         $('#new_post').submit();
       } else {
         event.preventDefault();
-        txtArea.val( postContent + "\n" );
+        // txtArea.val( postContent + "\n" );
         buildPost();
       }
     }

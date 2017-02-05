@@ -15,12 +15,8 @@
               .post_time
                 #{@current_time}
             #carousel
-              %a.prev.command
-                = evil_icon 'ei-arrow-left'
               .keyword
                 %p
-              %a.next.command
-                = evil_icon 'ei-arrow-right'
               %ul#imageCarousel
                 - (0..5).each do |i|
                   %li.imageItem{id: "image#{i}"}
