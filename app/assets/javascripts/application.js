@@ -46,22 +46,21 @@ $(document).ready(function() {
     } else if (!protoOn && event.keyCode != 8) {
       protoOn = setProto();
     }
-
-  })
-
-  $(txtArea).on('keypress', function(event) {
-    var postContent = txtArea.val();
-    $('#prototype .post_content').html(postContent);
     shiftOn = event.shiftKey;
     if (event.keyCode == 13) {
       if (shiftOn) {
         $('#new_post').submit();
       } else {
         event.preventDefault();
-        txtArea.val( postContent + "\n" );
-        buildPost();
+        // buildPost();
       }
     }
+    $('#prototype .post_content').find('p').text(postContent);
+  })
+
+  $(txtArea).on('keypress', function(event) {
+    var postContent = txtArea.val();
+    console.log(postContent);
   });
 
   $(window).on('load', emojifyPosts);
@@ -101,13 +100,10 @@ function buildPost() {
 
     // put up keywords and images.
     $(".keyword").find("p").text('');
-    $(".images").find("img").attr('src', '');
+    $(".image").find("img").attr('src', '');
+    console.log(result);
     if (result.keywords[0] !== "") {
-      for (var i = 0; i < result.keywords.length; i++) {
-        var img_id = "#image" + i;
-        $(img_id).find("img").attr('src', result.images[i]);
-        $(img_id).find("img").attr('alt', result.keywords[i]);
-      }
+      $(".image").find("img").attr('src', result.images[0]);
     }
   }, "json");
 }

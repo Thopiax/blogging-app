@@ -131,13 +131,12 @@ h1, h2, .notifications {
 }
 
 #carousel {
-  width: 80%;
-  display: inline-block;
+  width: 100%;
   transition: 1s;
 }
 
-.imageItem {
-  width: 200px;
+.image {
+  width: 100%;
   height: auto;
 }
 
@@ -153,4 +152,8 @@ h1, h2, .notifications {
 
 .post_emojis {
   font-size: 3em;
+}
+
+.post_content > p{
+  white-space: pre-wrap;
 }

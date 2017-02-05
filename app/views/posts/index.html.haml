@@ -17,12 +17,11 @@
             #carousel
               .keyword
                 %p
-              %ul#imageCarousel
-                - (0..5).each do |i|
-                  %li.imageItem{id: "image#{i}"}
-                    = image_tag "", atr: ""
+              .image
+                %img{src: ""}
           .col-xs-7
             .post_content
+              %p
           .col-xs-2
             .post_sentiment_emoji
               😐
