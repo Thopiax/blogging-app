@@ -1,15 +1,5 @@
 .post_form
-  #latestnews_ticker{:style=>"padding:0 10px;white-space:nowrap"}
-  %marquee{:onMouseOver=>"this.stop();", :onMouseOut=>"this.start();",
-  :scrolldelay=>10, :scrollamount=>4, :behavior=>"scroll"}
-  How was your day?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  What did you eat?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  How do you feel right now?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Where did you go?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  How did you commute?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Any messages for your future self?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-  Did you play any sports?&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+  %marquee{:direction => "right"} What did you eat? How do you feel right now? Where did you go? Any messages for your future self? What did you watch? How did you commute? How was your day?
   #logo
     = image_tag("owlly.png")
   .notifications
