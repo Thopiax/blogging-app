@@ -1,4 +1,5 @@
 require "addressable/uri"
+require_relative "api_controller"
 require 'google_custom_search_api'
 
 # Below is a class controlling the creation, presentation
@@ -35,9 +36,11 @@ class PostsController < ApplicationController
   def set_posts
     # define this variable for the root path and after creating a new message
     @posts = Post.all
+    @current_date = Time.now.strftime("%d %b")
+    @current_time = Time.now.strftime("%l:%M%P")
   end
 
   def post_content
-    params.require(:post).permit(:message)
+    params.require(:post).permit(:message, :emojis, :sentiment, :sent_emoji)
   end
 end

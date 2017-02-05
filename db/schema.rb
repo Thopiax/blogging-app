@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170204203836) do
+ActiveRecord::Schema.define(version: 20170205081653) do
 
   create_table "images", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -26,6 +26,9 @@ ActiveRecord::Schema.define(version: 20170204203836) do
     t.text     "message"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "sentiment"
+    t.string   "emojis"
+    t.string   "sent_emoji"
   end
 
 end

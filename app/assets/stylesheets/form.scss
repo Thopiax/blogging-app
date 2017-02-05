@@ -25,6 +25,10 @@
     color: white;
   }
 
+  #prompts, #carousel, .post_form {
+    display: inline-block;
+  }
+
   .post_form {
     width: 100%;
     p {

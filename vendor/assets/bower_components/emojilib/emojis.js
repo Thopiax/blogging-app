@@ -4354,31 +4354,6 @@ var allEmojis = {
     "char": "📳",
     "category": "symbols"
   },
-  "u6709": {
-    "keywords": ["orange-square", "chinese", "have", "kanji"],
-    "char": "🈶",
-    "category": "symbols"
-  },
-  "u7121": {
-    "keywords": ["nothing", "chinese", "kanji", "japanese", "orange-square"],
-    "char": "🈚",
-    "category": "symbols"
-  },
-  "u7533": {
-    "keywords": ["chinese", "japanese", "kanji", "orange-square"],
-    "char": "🈸",
-    "category": "symbols"
-  },
-  "u55b6": {
-    "keywords": ["japanese", "opening hours", "orange-square"],
-    "char": "🈺",
-    "category": "symbols"
-  },
-  "u6708": {
-    "keywords": ["chinese", "month", "moon", "japanese", "orange-square", "kanji"],
-    "char": "🈷️",
-    "category": "symbols"
-  },
   "eight_pointed_black_star": {
     "keywords": ["orange-square", "shape", "polygon"],
     "char": "✴️",

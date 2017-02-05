@@ -1,4 +1,5 @@
 .post_form
+  %marquee{:direction => "right"} What did you eat? How do you feel right now? Where did you go? Any messages for your future self? What did you watch? How did you commute? How was your day?
   #logo
     = image_tag("owlly.png")
   .notifications
@@ -21,5 +22,8 @@
   = form_for(@post) do |f|
     #form_post_text.field
       = f.text_area :message, placeholder: 'Get it off your chest...', autofocus: true
+      = f.hidden_field :sentiment, value: "#ffffff"
+      = f.hidden_field :emojis, value: ""
+      = f.hidden_field :sent_emoji, value: ""
     #form_post_submit.actions
       = f.submit 'Remember this!'

@@ -1,17 +1,35 @@
 .site_wrapper
-  #main
+  #main.container
     #home
       .table#diary_table
         #diary
+          #prompts
           = render 'form'
 
-
-    .sentiment_emoji
-      😀
-    #prototype.post
-      .post_date
-      .post_emojis
-      .post_content
+      #prototype.post
+        .row
+          .col-xs-3
+            .post_datetime
+              .post_date
+                #{@current_date}
+              .post_time
+                #{@current_time}
+            #carousel
+              .keyword
+                %p
+              %ul#imageCarousel
+                - (0..5).each do |i|
+                  %li.imageItem{id: "image#{i}"}
+                    = image_tag "", atr: ""
+          .col-xs-7
+            .post_content
+          .col-xs-2
+            .post_sentiment_emoji
+              😐
+        .row
+          .col-xs-2
+          .col-xs-10
+            .post_emojis
 
     .timeline
       %h2
@@ -21,12 +39,24 @@
           Your timeline seems to be empty! Write something in the form above.
       - else
         - @posts.reverse_each do |post|
-          .post
-            .post_message
-              / Use simple_format to ensure that new lines are displayed in the message.
-              = simple_format(post.message)
-            .post_footer
-              .post_delete_button
-                = button_to "Delete", post_path(post), method: :delete
-              .post_time
-                = 'posted ' + time_ago_in_words(post.created_at) + ' ago.'
+          .post{ style: "background-color: " + post.sentiment + ";"}
+            .row
+              .col-xs-2
+                .post_datetime
+                  .post_date
+                    = post.created_at.strftime("%d %b")
+                  .post_time
+                    = post.created_at.strftime("%l:%M%P")
+              .col-md-8
+                .post_content
+                  = simple_format(post.message)
+              .col-xs-2
+                .post_sentiment_emoji
+                  = post.sent_emoji
+            .row
+              .col-xs-2
+                .post_delete_button
+                  = button_to "Delete", post_path(post), method: :delete
+              .col-xs-10
+                .post_emojis
+                  = post.emojis
