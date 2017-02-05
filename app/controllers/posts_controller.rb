@@ -1,4 +1,5 @@
 require "addressable/uri"
+require_relative "api_controller"
 require 'google_custom_search_api'
 
 # Below is a class controlling the creation, presentation

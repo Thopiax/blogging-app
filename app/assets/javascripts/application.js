@@ -80,7 +80,6 @@ $(document).ready(function() {
 function buildPost() {
   var text = $('textarea').val();
   $('#prototype .post_content').html(text);
-  alert(encodeURIComponent(text));
   var result = $.getJSON('api/analyze_text/' + encodeURIComponent(text), function(result) {
     $('#prototype').velocity(
       {'background-color': result['sentimentColour']},
@@ -90,6 +89,21 @@ function buildPost() {
     $('#prototype .post_emojis').html(convertToEmoji(text));
 
     $('.sentiment_emoji').html(getSentEmoji(result['sentiment']));
+
+    // put up keywords and images.
+    $(".keyword").find("p").text('');
+    $(".images").find("img").attr('src', '');
+    if (result.keywords[0] !== "") {
+      for (var i = 0; i < result.keywords.length; i++) {
+        $(".keyword").find("p").text(result.keywords[i]);
+        // TODO: implement below
+        // for (var j = 0; j < result.images[i].length; j++) {
+        //   result.images[i][j]
+        // }
+        $(".images").find("img").attr('src', result.images[i][0]);
+      }
+    }
+
   });
 }
 
