@@ -131,7 +131,7 @@ function convertToEmoji(text) {
   var output = ""
   for (var i = 0; i < input.length; i++) {
     var emoji = getMeAnEmoji(input[i])[0];
-    if (emoji != null && emoji !== "" && emoji !== input[i].toLowerCase() ) {
+    if (emoji != null && emoji != "" && emoji.trim() != input[i].trim().toLowerCase() ) {
       output += emoji;
     }
   }
