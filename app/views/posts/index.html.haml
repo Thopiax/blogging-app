@@ -8,14 +8,12 @@
 
       #prototype.post
         .row
-          .col-md-2
+          .col-xs-3
             .post_datetime
               .post_date
                 #{@current_date}
               .post_time
                 #{@current_time}
-          .col-md-8
-            .post_content
             #carousel
               %a.prev.command
                 = evil_icon 'ei-arrow-left'
@@ -24,15 +22,17 @@
               %a.next.command
                 = evil_icon 'ei-arrow-right'
               %ul#imageCarousel
-                - (0..2).each do |i|
-                  %li{id: "image#{i}"}
-                    = image_tag '', alt: ""
-          .col-md-2
+                - (0..5).each do |i|
+                  %li.imageItem{id: "image#{i}"}
+                    = image_tag "", atr: ""
+          .col-xs-7
+            .post_content
+          .col-xs-2
             .post_sentiment_emoji
               😐
         .row
-          .col-md-2
-          .col-md-10
+          .col-xs-2
+          .col-xs-10
             .post_emojis
 
     .timeline
@@ -43,9 +43,9 @@
           Your timeline seems to be empty! Write something in the form above.
       - else
         - @posts.reverse_each do |post|
-          .post{ :style => 'background-color: ' + post.sentiment_colour }
+          .post{ style: "background-color: " + post.sentiment + ";"}
             .row
-              .col-md-2
+              .col-xs-2
                 .post_datetime
                   .post_date
                     = post.created_at.strftime("%d %b")
@@ -54,12 +54,13 @@
               .col-md-8
                 .post_content
                   = simple_format(post.message)
-              .col-md-2
+              .col-xs-2
                 .post_sentiment_emoji
-                  😐
+                  = post.sent_emoji
             .row
-              .col-md-2
+              .col-xs-2
                 .post_delete_button
                   = button_to "Delete", post_path(post), method: :delete
-              .col-md-10
+              .col-xs-10
                 .post_emojis
+                  = post.emojis

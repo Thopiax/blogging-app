@@ -15,12 +15,9 @@ class ApiController < ApplicationController
     sentiment_colour = get_sentiment_colour sentiment
 
     # Convert keywords into images
-    number_of_images = 5
     images = []
     keywords.each do |keyword|
-      images.push(["https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png",
-                  "https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png",
-                  "https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png"])
+      images.push("https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png")
     end
 
     result = {
@@ -44,11 +41,8 @@ class ApiController < ApplicationController
 
   def get_images(keyword, number_of_images)
     results = GoogleCustomSearchApi.search(keyword, limit: number_of_images, searchType: "image")
-    images = []
-    results["items"].each do |item|
-      images << item["link"]
-    end
-    return images
+    results.items[0].link unless results.empty?
+    raise ArgumentError, "resultts of api search are null" if results.empty?
   end
 
   def get_sentiment(txt)

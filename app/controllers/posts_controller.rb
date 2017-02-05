@@ -13,8 +13,6 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_content)
-    @post.write_attribute :sentiment_colour, '#ffffff'
-    @post.write_attribute :emojis, ''
     respond_to do |format|
       format.html do
         if @post.save
@@ -43,6 +41,6 @@ class PostsController < ApplicationController
   end
 
   def post_content
-    params.require(:post).permit(:message)
+    params.require(:post).permit(:message, :emojis, :sentiment, :sent_emoji)
   end
 end

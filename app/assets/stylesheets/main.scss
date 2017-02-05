@@ -3,15 +3,24 @@
 
 body {
   margin: 0;
+  font-family: 'Inconsolata', monospace;
   background-color: rgb(243, 246, 247);
-  font-family: Tahoma, Geneva, sans-serif;
+}
+
+.site_wrapper {
+  background-color: rgb(243, 246, 247);
 }
 
 #home {
-  display: inline-block;
+  // display: inline-block;
   width: 100%;
   max-width: 100vw;
+  min-height: 100%;
   height: 100vh;
+}
+
+ul {
+  list-style: none;
 }
 
 .timeline, #proto, #diary {
@@ -107,10 +116,13 @@ h1, h2, .notifications {
 
 
 #logo {
+  width: 100%;
+  padding-left: 50%;
   img {
+    transform: translateX(-50%);
     height: auto;
-    width: 40%;
-    margin-left: 30%;
+    width: 50%;
+    max-width: 400px;
   }
 }
 
@@ -121,16 +133,16 @@ h1, h2, .notifications {
 #carousel {
   width: 80%;
   display: inline-block;
-  position: absolute;
   transition: 1s;
+}
+
+.imageItem {
+  width: 200px;
+  height: auto;
 }
 
 .command, .keyword {
   display: inline-block;
   height: 1em;
   margin: auto;
-}
-
-.command {
-  background: black;
 }

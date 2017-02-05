@@ -20,8 +20,8 @@
 //= require_tree .
 
 // Create a variable to store the "shift state" (whether it is pressed or not)
-shiftOn = false;
-protoOn = false;
+var shiftOn = false;
+var protoOn = false;
 
 $(document).ready(function() {
 
@@ -30,7 +30,8 @@ $(document).ready(function() {
         next: $('.next'),
         prev: $('.prev'),
         slidespeed: 400,
-        width: 480,
+        auto: 4000,
+        width: 200,
         height: 280,
     });
 
@@ -48,32 +49,33 @@ $(document).ready(function() {
 
   })
 
-  $(txtArea).on('keypress', function(event) {
+  $(txtArea).on('keydown', function(event) {
+    var postContent = txtArea.val();
+    $('#prototype .post_content').html(postContent);
+  })
 
+  $(txtArea).on('keypress', function(event) {
     var postContent = txtArea.val();
 
     shiftOn = event.shiftKey;
     if (event.keyCode == 13) {
       if (shiftOn) {
+        $('#new_post').submit();
+      } else {
         event.preventDefault();
         txtArea.val( postContent + "\n" );
         buildPost();
-      } else {
-        $('#new_post').submit();
       }
     }
+
   });
 
   $(window).on('load', emojifyPosts);
-
-  //txtArea.on('change keyup press', buildPost);
-
   $('#new_post').submit(emojifyPosts);
 
   function unsetProto() {
     diary_table.css("height", "100%");
     owl.css("width", "50%");
-    owl.css("margin-left", "25%");
     $('#prototype').fadeOut("slow");
     return false;
   }
@@ -81,7 +83,6 @@ $(document).ready(function() {
   function setProto() {
     diary_table.css("height", "50%");
     owl.css("width", "20%");
-    owl.css("margin-left", "40%");
     $('#prototype').fadeIn("slow");
     return true;
   }
@@ -97,6 +98,10 @@ function buildPost() {
       {duration: 1200}
     );
 
+    $("#post_sentiment").val(result['sentimentColour']);
+    $("#post_emojis").val(convertToEmoji(text));
+    $("#post_sent_emoji").val(getSentEmoji(result['sentiment']));
+
     $('#prototype .post_emojis').html(convertToEmoji(text));
     $('.post_sentiment_emoji').html(getSentEmoji(result['sentiment']));
 
@@ -104,16 +109,10 @@ function buildPost() {
     $(".keyword").find("p").text('');
     $(".images").find("img").attr('src', '');
     if (result.keywords[0] !== "") {
-      console.log(result.keywords);
       for (var i = 0; i < result.keywords.length; i++) {
-        $(".keyword").find("p").text(result.keywords[i]);
-        for (var j = 0; j < result.images[i].length; j++) {
-          var img_id = "#image" + j;
-          console.log(img_id);
-          $(img_id).find("img").attr('src', result.images[i][j]);
-          $(img_id).find("img").attr('alt', result.keywords[i]);
-        }
-        // $(".images").find("img").attr('src', result.images[i][0]);
+        var img_id = "#image" + i;
+        $(img_id).find("img").attr('src', result.images[i]);
+        $(img_id).find("img").attr('alt', result.keywords[i]);
       }
     }
   });
@@ -148,9 +147,9 @@ function getSentEmoji(sent) {
   } else if (sent < 0.6) {
     emoji = getMeAnEmoji('neutral_face');
   } else if (sent < 0.8) {
-    emoji = getMeAnEmoji('smiley');
+    emoji = getMeAnEmoji('slightly_smiling');
   } else if (sent < 1.0) {
-    emoji = getMeAnEmoji('grinning');
+    emoji = getMeAnEmoji('smiley');
   }
   return emoji[0];
 }
