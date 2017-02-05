@@ -5,7 +5,7 @@
         #diary
           #prompts
           = render 'form'
-          
+
       #prototype.post
         .row
           .col-md-2
@@ -43,14 +43,14 @@
           Your timeline seems to be empty! Write something in the form above.
       - else
         - @posts.reverse_each do |post|
-          .post
+          .post{ :style => 'background-color: ' + post.sentiment_colour }
             .row
               .col-md-2
                 .post_datetime
                   .post_date
-                    #{@current_date}
+                    = post.created_at.strftime("%d %b")
                   .post_time
-                    #{@current_time}
+                    = post.created_at.strftime("%l:%M%P")
               .col-md-8
                 .post_content
                   = simple_format(post.message)

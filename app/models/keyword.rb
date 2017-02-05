@@ -1,4 +1,4 @@
 class Keyword < ApplicationRecord
   belongs_to :post
-  has_many :image
+  validates :image_url, presence: true
 end

@@ -13,6 +13,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_content)
+    @post.write_attribute :sentiment_colour, '#ffffff'
+    @post.write_attribute :emojis, ''
     respond_to do |format|
       format.html do
         if @post.save
