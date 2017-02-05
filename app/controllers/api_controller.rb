@@ -24,7 +24,7 @@ class ApiController < ApplicationController
       keywords: keywords,
       sentiment: sentiment,
       sentimentColour: sentiment_colour,
-      images: images,
+      images: images
     }
 
     render :json => result
@@ -40,11 +40,9 @@ class ApiController < ApplicationController
   end
 
   def get_images(keyword)
-    results = GoogleCustomSearchApi.search(keyword, limit: 20, searchType: "image")
-    puts "-----------------------"
-    puts results.items[0].link
+    results = GoogleCustomSearchApi.search(keyword, limit: 5, searchType: "image")
     raise ArgumentError, "results of api search are null" if results.empty?
-    results.items[0].link unless results.empty?
+    results.items.map {|f| f.link} unless results.empty?
   end
 
   def get_sentiment(txt)

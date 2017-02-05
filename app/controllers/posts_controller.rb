@@ -13,6 +13,8 @@ class PostsController < ApplicationController
 
   def create
     @post = Post.new(post_content)
+    puts "------------------------"
+    puts @post.image_url
     respond_to do |format|
       format.html do
         if @post.save
@@ -41,6 +43,6 @@ class PostsController < ApplicationController
   end
 
   def post_content
-    params.require(:post).permit(:message, :emojis, :sentiment, :sent_emoji)
+    params.require(:post).permit(:message, :emojis, :sentiment, :sent_emoji, :image_url)
   end
 end

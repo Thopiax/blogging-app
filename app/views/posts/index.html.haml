@@ -45,9 +45,12 @@
                 .post_content{style: "text-align: " + (index % 2 == 0 ? 'right' : 'left')}
                   .carousel.slide{"data-ride" => "carousel", id: index, style: "float: " + (index % 2 == 0 ? 'left' : 'right')}
                     .carousel-inner{:role => "listbox"}
-                      - @post.keywords.each do |keyword|
+                      - first = post.image_url.split(",").pop
+                      .item.active
+                        = image_tag first
+                      - post.image_url.split(",").each do |url|
                         .item
-                          %img{:src => keyword.image}
+                          = image_tag url
                           .carousel-caption
                     %a.left.carousel-control{"data-slide" => "prev", :href => "#" + index.to_s, :role => "button"}
                       %span.glyphicon.glyphicon-chevron-left{"aria-hidden" => "true"}

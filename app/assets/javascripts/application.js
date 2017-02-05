@@ -97,6 +97,7 @@ function buildPost() {
     $("#post_sentiment").val(result['sentimentColour']);
     $("#post_emojis").val(convertToEmoji(text));
     $("#post_sent_emoji").val(getSentEmoji(result['sentiment']));
+    $("#post_image_url").val(result['images'].join(","));
 
     $('#prototype .post_emojis').html(convertToEmoji(text));
     $('.post_sentiment_emoji').html(getSentEmoji(result['sentiment']));
