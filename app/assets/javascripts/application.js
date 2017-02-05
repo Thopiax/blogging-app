@@ -41,31 +41,34 @@ $(document).ready(function() {
 
   $(txtArea).on('keyup', function(event) {
     var postContent = txtArea.val();
+    $('#prototype .post_content').find('p').text(postContent);
     if (postContent === "" && protoOn) {
       protoOn = unsetProto();
     } else if (!protoOn && event.keyCode != 8) {
       protoOn = setProto();
     }
-
-  })
-
-  $(txtArea).on('keypress', function(event) {
-    var postContent = txtArea.val();
-    $('#prototype .post_content').html(postContent);
     shiftOn = event.shiftKey;
     if (event.keyCode == 13) {
       if (shiftOn) {
         $('#new_post').submit();
       } else {
         event.preventDefault();
-        txtArea.val( postContent + "\n" );
-        buildPost();
+        // buildPost();
       }
+    } else if (event.keyCode == 190) {
+      buildPost();
     }
+  })
+
+  $(txtArea).on('keypress', function(event) {
+    var postContent = txtArea.val();
+    console.log(postContent);
   });
 
   $(window).on('load', emojifyPosts);
   $('#new_post').submit(emojifyPosts);
+
+  $('.analyze_button').click(buildPost);
 
   function unsetProto() {
     diary_table.css("height", "100%");
@@ -85,7 +88,6 @@ $(document).ready(function() {
 
 function buildPost() {
   var text = $('textarea').val();
-  $('#prototype .post_content').html(text);
   $.post('/api/analyze_text/', {'txt': text}, function(result, textStatus) {
     $('#prototype').velocity(
       {'background-color': result['sentimentColour']},
@@ -101,13 +103,10 @@ function buildPost() {
 
     // put up keywords and images.
     $(".keyword").find("p").text('');
-    $(".images").find("img").attr('src', '');
+    $(".image").find("img").attr('src', '');
+    console.log(result);
     if (result.keywords[0] !== "") {
-      for (var i = 0; i < result.keywords.length; i++) {
-        var img_id = "#image" + i;
-        $(img_id).find("img").attr('src', result.images[i]);
-        $(img_id).find("img").attr('alt', result.keywords[i]);
-      }
+      $(".image").find("img").attr('src', result.images[0]);
     }
   }, "json");
 }

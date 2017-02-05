@@ -14,15 +14,9 @@
                 #{@current_date}
               .post_time
                 #{@current_time}
-            #carousel
-              .keyword
-                %p
-              %ul#imageCarousel
-                - (0..5).each do |i|
-                  %li.imageItem{id: "image#{i}"}
-                    = image_tag "", atr: ""
           .col-xs-7
             .post_content
+              %p
           .col-xs-2
             .post_sentiment_emoji
               😐
@@ -67,7 +61,7 @@
                   = post.sent_emoji
             .row
               .col-xs-2
-                .post_delete_button
+                .post_delete_button.btn.btn-info
                   = button_to "Delete", post_path(post), method: :delete
               .col-xs-10
                 .post_emojis

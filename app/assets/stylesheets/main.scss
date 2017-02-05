@@ -130,8 +130,7 @@ h1, h2, .notifications {
 }
 
 #carousel {
-  width: 80%;
-  display: inline-block;
+  width: 100%;
   transition: 1s;
 }
 
@@ -163,4 +162,15 @@ h1, h2, .notifications {
 
 .post_emojis {
   font-size: 3em;
+}
+
+.post_content > p{
+  white-space: pre-wrap;
+}
+
+.analyze_button {
+  width: 95%;
+  margin: 5px;
+  padding: 1rem !important;
+  box-sizing : border-box;
 }
