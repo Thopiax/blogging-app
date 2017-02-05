@@ -24,6 +24,15 @@ protoOn = false;
 
 $(document).ready(function() {
 
+  // initialize carousel
+  $("#imageCarousel").simplecarousel({
+        next: $('.next'),
+        prev: $('.prev'),
+        auto: 5000,
+        width: 480,
+        height: 280
+    });
+
   var diary_table = $("#diary_table");
   var prototype = $("#prototype");
   var txtArea = $('#form_post_text').find('textarea');
@@ -98,11 +107,13 @@ function buildPost() {
       console.log(result.keywords);
       for (var i = 0; i < result.keywords.length; i++) {
         $(".keyword").find("p").text(result.keywords[i]);
-        // TODO: implement below
-        // for (var j = 0; j < result.images[i].length; j++) {
-        //   result.images[i][j]
-        // }
-        $(".images").find("img").attr('src', result.images[i][0]);
+        for (var j = 0; j < result.images[i].length; j++) {
+          var img_id = "#image" + j;
+          console.log(img_id);
+          $(img_id).find("img").attr('src', result.images[i][j]);
+          $(img_id).find("img").attr('alt', result.keywords[i]);
+        }
+        // $(".images").find("img").attr('src', result.images[i][0]);
       }
     }
   });

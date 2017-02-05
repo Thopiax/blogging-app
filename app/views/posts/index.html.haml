@@ -8,28 +8,30 @@
           #carousel
             .keyword
               %p
-            .images
-              = image_tag ''
+            %ul#imageCarousel
+              - (0..2).each do |i|
+                %li{id: "image#{i}"}
+                  = image_tag '', alt: ""
 
-    #prototype.post
-      .row
-        .col-md-2
-          .post_datetime
-            .post_date
-              #{@current_date}
-            .post_time
-              #{@current_time}
-        .col-md-8
-          .post_content
-        .col-md-2
-          .post_sentiment_emoji
-            😐
-      .row
-        .col-md-2
-        .col-md-10
-          .post_emojis
-      .sentiment_emoji
-        😀
+      #prototype.post
+        .row
+          .col-md-2
+            .post_datetime
+              .post_date
+                #{@current_date}
+              .post_time
+                #{@current_time}
+          .col-md-8
+            .post_content
+          .col-md-2
+            .post_sentiment_emoji
+              😐
+        .row
+          .col-md-2
+          .col-md-10
+            .post_emojis
+        .sentiment_emoji
+          😀
 
     .timeline
       %h2
