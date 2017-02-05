@@ -34,7 +34,6 @@ $(document).ready(function() {
     });
 
   var diary_table = $("#diary_table");
-  var prototype = $("#prototype");
   var txtArea = $('#form_post_text').find('textarea');
   var owl = $('#logo').find('img');
 
@@ -74,7 +73,7 @@ $(document).ready(function() {
     diary_table.css("height", "100%");
     owl.css("width", "50%");
     owl.css("margin-left", "25%");
-    prototype.css({ "opacity": 0 });
+    $('#prototype').fadeOut("slow");
     return false;
   }
 
@@ -82,7 +81,7 @@ $(document).ready(function() {
     diary_table.css("height", "50%");
     owl.css("width", "20%");
     owl.css("margin-left", "40%");
-    prototype.css({ "opacity": 100 });
+    $('#prototype').fadeIn("slow");
     return true;
   }
 
