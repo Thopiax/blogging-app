@@ -84,7 +84,8 @@ $(document).ready(function() {
 
 function buildPost() {
   var text = $('textarea').val();
-  var result = $.getJSON('api/analyze_text/' + encodeURIComponent(text), function(result) {
+  $('#prototype .post_content').html(text);
+  $.post('/api/analyze_text/', {'txt': text}, function(result, textStatus) {
     $('#prototype').velocity(
       {'background-color': result['sentimentColour']},
       {duration: 1200}
@@ -104,7 +105,7 @@ function buildPost() {
     if (result.keywords[0] !== "") {
       $(".image").find("img").attr('src', result.images[0]);
     }
-  });
+  }, "json");
 }
 
 function emojifyPosts() {
