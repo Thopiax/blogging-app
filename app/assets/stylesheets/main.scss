@@ -157,3 +157,10 @@ h1, h2, .notifications {
 .post_content > p{
   white-space: pre-wrap;
 }
+
+.analyze_button {
+  width: 95%;
+  margin: 5px;
+  padding: 1rem !important;
+  box-sizing : border-box;
+}

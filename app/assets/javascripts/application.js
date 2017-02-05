@@ -41,6 +41,7 @@ $(document).ready(function() {
 
   $(txtArea).on('keyup', function(event) {
     var postContent = txtArea.val();
+    $('#prototype .post_content').find('p').text(postContent);
     if (postContent === "" && protoOn) {
       protoOn = unsetProto();
     } else if (!protoOn && event.keyCode != 8) {
@@ -54,8 +55,9 @@ $(document).ready(function() {
         event.preventDefault();
         // buildPost();
       }
+    } else if (event.keyCode == 190) {
+      buildPost();
     }
-    $('#prototype .post_content').find('p').text(postContent);
   })
 
   $(txtArea).on('keypress', function(event) {
@@ -65,6 +67,8 @@ $(document).ready(function() {
 
   $(window).on('load', emojifyPosts);
   $('#new_post').submit(emojifyPosts);
+
+  $('.analyze_button').click(buildPost);
 
   function unsetProto() {
     diary_table.css("height", "100%");
@@ -84,7 +88,6 @@ $(document).ready(function() {
 
 function buildPost() {
   var text = $('textarea').val();
-  $('#prototype .post_content').html(text);
   $.post('/api/analyze_text/', {'txt': text}, function(result, textStatus) {
     $('#prototype').velocity(
       {'background-color': result['sentimentColour']},
