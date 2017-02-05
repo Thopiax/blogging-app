@@ -40,9 +40,11 @@ class ApiController < ApplicationController
   end
 
   def get_images(keyword)
-    results = GoogleCustomSearchApi.search(keyword, limit: 2, searchType: "image")
-    results.items[0].link unless results.empty?
+    results = GoogleCustomSearchApi.search(keyword, limit: 20, searchType: "image")
+    puts "-----------------------"
+    puts results.items[0].link
     raise ArgumentError, "results of api search are null" if results.empty?
+    results.items[0].link unless results.empty?
   end
 
   def get_sentiment(txt)
