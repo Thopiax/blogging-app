@@ -17,7 +17,7 @@ class ApiController < ApplicationController
     # Convert keywords into images
     images = []
     keywords.each do |keyword|
-      images.push("https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png")
+      images.push(get_images keyword)
     end
 
     result = {
@@ -39,10 +39,10 @@ class ApiController < ApplicationController
     color.html
   end
 
-  def get_images(keyword, number_of_images)
-    results = GoogleCustomSearchApi.search(keyword, limit: number_of_images, searchType: "image")
+  def get_images(keyword)
+    results = GoogleCustomSearchApi.search(keyword, limit: 2, searchType: "image")
     results.items[0].link unless results.empty?
-    raise ArgumentError, "resultts of api search are null" if results.empty?
+    raise ArgumentError, "results of api search are null" if results.empty?
   end
 
   def get_sentiment(txt)
