@@ -8,6 +8,7 @@
 /.bundle
 Gemfile.lock
 .DS_Store
+vendor
 
 # Ignore the default SQLite database.
 /db/*.sqlite3
