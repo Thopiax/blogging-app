@@ -16,7 +16,6 @@ body {
   width: 100%;
   max-width: 100vw;
   min-height: 100%;
-  height: 100vh;
 }
 
 ul {
@@ -135,8 +134,19 @@ h1, h2, .notifications {
   transition: 1s;
 }
 
-.image {
-  width: 100%;
+.carousel {
+  float: left;
+  width: 25%;
+  height: 25%;
+}
+
+.carousel img {
+  max-height: 25%;
+  max-width: 25%;
+}
+
+.imageItem {
+  width: 200px;
   height: auto;
 }
 
