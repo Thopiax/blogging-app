@@ -49,25 +49,19 @@ $(document).ready(function() {
 
   })
 
-  $(txtArea).on('keydown', function(event) {
-    var postContent = txtArea.val();
-    $('#prototype .post_content').html(postContent);
-  })
-
   $(txtArea).on('keypress', function(event) {
     var postContent = txtArea.val();
-
+    $('#prototype .post_content').html(postContent);
     shiftOn = event.shiftKey;
     if (event.keyCode == 13) {
       if (shiftOn) {
         $('#new_post').submit();
       } else {
         event.preventDefault();
-        // txtArea.val( postContent + "\n" );
+        txtArea.val( postContent + "\n" );
         buildPost();
       }
     }
-
   });
 
   $(window).on('load', emojifyPosts);
@@ -91,7 +85,6 @@ $(document).ready(function() {
 
 function buildPost() {
   var text = $('textarea').val();
-  $('#prototype .post_content').html(text);
   var result = $.getJSON('api/analyze_text/' + encodeURIComponent(text), function(result) {
     $('#prototype').velocity(
       {'background-color': result['sentimentColour']},
