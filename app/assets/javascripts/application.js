@@ -86,8 +86,22 @@ function buildPost() {
     );
 
     $('#prototype .post_emojis').html(convertToEmoji(text));
-
     $('.post_sentiment_emoji').html(getSentEmoji(result['sentiment']));
+
+    // put up keywords and images.
+    $(".keyword").find("p").text('');
+    $(".images").find("img").attr('src', '');
+    if (result.keywords[0] !== "") {
+      console.log(result.keywords);
+      for (var i = 0; i < result.keywords.length; i++) {
+        $(".keyword").find("p").text(result.keywords[i]);
+        // TODO: implement below
+        // for (var j = 0; j < result.images[i].length; j++) {
+        //   result.images[i][j]
+        // }
+        $(".images").find("img").attr('src', result.images[i][0]);
+      }
+    }
   });
 }
 
@@ -113,16 +127,16 @@ function convertToEmoji(text) {
 
 function getSentEmoji(sent) {
   var emoji = "";
-  if(sent < 0.2) {
+  if(sent < 0.15) {
     emoji = getMeAnEmoji('sob');
-  } else if (sent < 0.4) {
+  } else if (sent < 0.3) {
     emoji = getMeAnEmoji('sad');
-  } else if (sent < 0.5) {
+  } else if (sent < 0.6) {
     emoji = getMeAnEmoji('neutral_face');
   } else if (sent < 0.8) {
     emoji = getMeAnEmoji('smiley');
   } else if (sent < 1.0) {
     emoji = getMeAnEmoji('grinning');
   }
-  return emoji;
+  return emoji[0];
 }

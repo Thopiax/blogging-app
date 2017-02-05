@@ -18,7 +18,9 @@ class ApiController < ApplicationController
     number_of_images = 5
     images = []
     keywords.each do |keyword|
-      images.push(get_images(keyword, number_of_images))
+      images.push(["https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png",
+                  "https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png",
+                  "https://upload.wikimedia.org/wikipedia/en/e/eb/SupermanRoss.png"])
     end
 
     result = {

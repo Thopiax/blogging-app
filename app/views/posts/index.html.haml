@@ -3,7 +3,13 @@
     #home
       .table#diary_table
         #diary
+          #prompts
           = render 'form'
+          #carousel
+            .keyword
+              %p
+            .images
+              = image_tag ''
 
     #prototype.post
       .row
@@ -22,6 +28,8 @@
         .col-md-2
         .col-md-10
           .post_emojis
+      .sentiment_emoji
+        😀
 
     .timeline
       %h2
