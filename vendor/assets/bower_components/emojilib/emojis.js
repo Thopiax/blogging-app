@@ -3565,7 +3565,7 @@ var allEmojis = {
     "category": "objects"
   },
   "smoking": {
-    "keywords": ["tobacco", "cigarette", "joint", "smoke"],
+    "keywords": ["kill", "tobacco", "cigarette", "joint", "smoke"],
     "char": "🚬",
     "category": "objects"
   },
