@@ -51,12 +51,15 @@ $(document).ready(function() {
     if (event.keyCode == 13) {
       if (shiftOn) {
         $('#new_post').submit();
+        buildPost();
       } else {
         event.preventDefault();
-        // buildPost();
       }
     } else if (event.keyCode == 190) {
       buildPost();
+    } else if (event.keyCode == 32) {
+      $('#prototype .post_emojis').html(convertToEmoji(postContent));
+      $("#post_emojis").val(convertToEmoji(postContent));
     }
   })
 
@@ -100,7 +103,7 @@ function buildPost() {
     $("#post_image_url").val(result['images'].join(","));
 
     $('#prototype .post_emojis').html(convertToEmoji(text));
-    $('.post_sentiment_emoji').html(getSentEmoji(result['sentiment']));
+    $('#prototype .post_sentiment_emoji').html(getSentEmoji(result['sentiment']));
 
     // put up keywords and images.
     $(".keyword").find("p").text('');

@@ -9,6 +9,7 @@
   height: 100%;
   display: table-cell;
   vertical-align: middle;
+  font-size: 2em !important;
 
   ul {
     list-style: none;
@@ -20,7 +21,8 @@
     background-color: $main_color;
     width: 100%;
     border-radius: 0 0 10px 10px;
-    margin-top: -4px;
+    margin-top: -10px;
+    font-size: 2rem !important;
     border:  1px solid darken($main_color, 3%);
     color: white;
   }
@@ -55,7 +57,7 @@
 
   .post, #form_post_text textarea, .error_message {
     width: 100%;
-    margin: 1em 0;
+    margin: 2em 0;
   }
 
   #form_post_text textarea {
@@ -63,6 +65,7 @@
     box-sizing : border-box;
     border: 0 solid;
     font-size: 1.25rem;
+    font-size: 2rem !important;
     margin-bottom: 0;
     border-radius: 10px 10px 0 0;
     padding: 1em;

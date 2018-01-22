@@ -1,7 +1,11 @@
 .post_form
-  %marquee{:direction => "right"} What did you eat? How do you feel right now? Where did you go? Any messages for your future self? What did you watch? How did you commute? How was your day?
+  %h1
+    Owlee
+  %h2{style: "font-size: 2rem;"}
+    The Anti Social Network
   #logo
     = image_tag("owlly.png")
+  %marquee{:direction => "right"} What did you eat? How do you feel right now? Where did you go? Any messages for your future self? What did you watch? How did you commute? How was your day?
   .notifications
     - if @post.errors.any?
       .error_message
